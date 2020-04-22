@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 2020_04_22_064350) do
   create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "uuid"
     t.string "name"
-    t.datetime "date_time"
+    t.datetime "event_date"
     t.string "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2020_04_22_064350) do
     t.string "uuid"
     t.string "name"
     t.string "email"
-    t.string "senha"
+    t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
