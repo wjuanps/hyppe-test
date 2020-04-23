@@ -13,12 +13,14 @@
 ActiveRecord::Schema.define(version: 2020_04_22_064350) do
 
   create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+    t.bigint "user_id"
     t.string "uuid"
     t.string "name"
     t.datetime "event_date"
     t.string "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_events_on_user_id"
   end
 
   create_table "participants", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
