@@ -5,35 +5,35 @@ import { FiArrowLeft } from "react-icons/fi";
 import "./styles.css";
 
 import api from "../../services/api";
+import auth from "../../services/auth";
+import userModel from "../../services/user";
 
 import logoImg from "../../assets/logo.png";
 
 export default function Register() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [whatsapp, setWhatsapp] = useState("");
-  const [city, setCity] = useState("");
-  const [uf, setUf] = useState("");
+  const [password, setPassword] = useState("");
 
   const history = useHistory();
 
   async function handleRegister(e) {
     e.preventDefault();
 
-    const data = {
-      name,
-      email,
-      whatsapp,
-      city,
-      uf
-    };
-
     try {
-      const response = await api.post("/ongs", data);
+      const params = new URLSearchParams();
+      params.append("name", name);
+      params.append("email", email);
+      params.append("password", password);
 
-      alert(`Seu ID de acesso: ${response.data.id}`);
+      await userModel.create(params);
 
-      history.push("/");
+      let response = await auth.authenticate(params);
+      let { auth_token } = response.data;
+
+      localStorage.setItem("hyppe_auth_token", auth_token);
+
+      window.open("/profile", "_self");
     } catch (err) {
       console.log(err);
       alert("Erro no cadastro, tente novamente");
@@ -59,34 +59,25 @@ export default function Register() {
 
         <form onSubmit={handleRegister}>
           <input
-            placeholder="Nome da ONG"
+            type="text"
+            placeholder="Seu nome"
             value={name}
+            required={true}
             onChange={e => setName(e.target.value)}
           />
           <input
             type="email"
-            placeholder="E-mail"
+            placeholder="Seu email"
             value={email}
+            required={true}
             onChange={e => setEmail(e.target.value)}
           />
           <input
-            placeholder="WhatsApp"
-            value={whatsapp}
-            onChange={e => setWhatsapp(e.target.value)}
+            type="password"
+            placeholder="Sua senha"
+            value={password}
+            onChange={e => setPassword(e.target.value)}
           />
-          <div className="input-group">
-            <input
-              placeholder="Cidade"
-              value={city}
-              onChange={e => setCity(e.target.value)}
-            />
-            <input
-              placeholder="UF"
-              style={{ width: 80 }}
-              value={uf}
-              onChange={e => setUf(e.target.value)}
-            />
-          </div>
 
           <button className="button" type="submit">
             Cadastrar

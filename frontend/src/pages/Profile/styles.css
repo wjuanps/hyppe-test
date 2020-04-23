@@ -34,6 +34,11 @@
   border-color: #999;
 }
 
+.profile-container div.header {
+  display: flex;
+  justify-content: space-between;
+}
+
 .profile-container h1 {
   margin-top: 80px;
   margin-bottom: 24px;
@@ -53,11 +58,33 @@
   position: relative;
 }
 
-.profile-container ul li button {
+.profile-container div.header button.button-header {
+  padding: 16px 24px;
+  background: #e02041;
+  border: 0;
+  color: #fff;
+  font-weight: 700;
+  margin-top: 70px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+}
+
+.profile-container ul li button.delete {
   position: absolute;
   right: 24px;
   top: 24px;
   border: 0;
+  padding: 5px;
+}
+
+.profile-container ul li button.marcar-presenca {
+  margin-top: 15px;
+  width: 100%;
+  padding: 10px;
+  background: #e02041;
+  border: 0;
+  color: #fff;
+  font-weight: 900;
 }
 
 .profile-container ul li button:hover {

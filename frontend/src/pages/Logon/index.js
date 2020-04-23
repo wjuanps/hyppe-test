@@ -4,13 +4,14 @@ import { FiLogIn } from "react-icons/fi";
 
 import heroesImg from "../../assets/heroes.png";
 import logoImg from "../../assets/logo.png";
-import api from "../../services/api";
+
+import auth from "../../services/auth";
 
 import "./styles.css";
 
 export default function Logon() {
-  const [id, setId] = useState("");
-  const [senha, setSenha] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const history = useHistory();
 
@@ -18,17 +19,21 @@ export default function Logon() {
     e.preventDefault();
 
     try {
-      const response = await api.post("/sessions", { id });
+      const params = new URLSearchParams();
+      params.append("email", email);
+      params.append("password", password);
 
-      localStorage.setItem("ongId", id);
-      localStorage.setItem("ongName", response.data.name);
+      let response = await auth.authenticate(params);
+      let { auth_token } = response.data;
 
-      history.push("/profile");
+      localStorage.setItem("hyppe_auth_token", auth_token);
+
+      window.open("/profile", "_self");
     } catch (err) {
-      console.log(err);
-      alert("Falha no login, tente novamente.");
+      alert("Email ou senha inválidos");
     }
   }
+
   return (
     <div className="logon-container">
       <section className="form">
@@ -38,15 +43,16 @@ export default function Logon() {
           <h1> Faça seu logon </h1>
 
           <input
+            type="email"
             placeholder="Seu Email"
-            value={id}
-            onChange={e => setId(e.target.value)}
+            value={email}
+            onChange={e => setEmail(e.target.value)}
           />
           <input
             type="password"
             placeholder="Sua Senha"
-            value={senha}
-            onChange={e => setSenha(e.target.value)}
+            value={password}
+            onChange={e => setPassword(e.target.value)}
           />
           <button className="button" type="submit">
             Entrar
