@@ -29,6 +29,7 @@
 }
 
 .icon-spin {
+  margin-top: 20px;
   -webkit-animation:icon-spin 2s linear infinite;
   -moz-animation:icon-spin 2s linear infinite;
   animation:icon-spin 2s linear infinite;

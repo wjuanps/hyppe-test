@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import { FiArrowLeft } from "react-icons/fi";
+import { FiArrowLeft, FiRefreshCcw } from "react-icons/fi";
 
 import "./styles.css";
 
@@ -15,10 +15,13 @@ export default function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const [loading, setLoading] = useState(false);
+
   const history = useHistory();
 
   async function handleRegister(e) {
     e.preventDefault();
+    setLoading(true);
 
     try {
       const params = new URLSearchParams();
@@ -33,10 +36,12 @@ export default function Register() {
 
       localStorage.setItem("hyppe_auth_token", auth_token);
 
+      setLoading(false);
       window.open("/profile", "_self");
     } catch (err) {
       console.log(err);
       alert("Erro no cadastro, tente novamente");
+      setLoading(false);
     }
   }
 
@@ -79,8 +84,8 @@ export default function Register() {
             onChange={e => setPassword(e.target.value)}
           />
 
-          <button className="button" type="submit">
-            Cadastrar
+          <button disabled={loading} className="button" type="submit">
+            {loading ? <FiRefreshCcw className="icon-spin" size={22} color="#ffffff" /> : 'Cadastrar'}
           </button>
         </form>
       </div>
