@@ -3,13 +3,28 @@ module Api
     class EventsController < ApplicationController
       def index
         events = Event.select(:uuid, :name, :event_date, :address)
+          .order(event_date: :asc)
         render json: { code: 200, data: events }, status: :ok
       end
 
       def show
         event = Event.where(uuid: params[:id])
-          .select(:uuid, :name, :event_date, :address).take
-        render json: { code: 200, data: event }, status: :ok
+          .select(:id, :uuid, :name, :event_date, :address).take
+
+        participants = Participant
+          .select("is_confirmed, users.name")
+          .joins(:user, :event)
+          .where(events: { id: event.id })
+
+        event.id = nil;
+
+        render json: {
+          code: 200,
+          data: {
+            event: event,
+            participants: participants
+          }
+        }, status: :ok
       end
 
       def update

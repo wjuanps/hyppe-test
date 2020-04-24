@@ -2,9 +2,11 @@ module Api
   module V1
     class UserEventsController < ApplicationController
       def index
-        events = Event.includes(:users)
-          .where(user_id: current_user.id)
+        events = Event
+          .includes(:users)
           .select(:uuid, :name, :event_date, :address)
+          .where(user_id: current_user.id)
+          .order(:event_date)
         render json: {
           code: 200,
           data: events
