@@ -51,12 +51,14 @@ export default function Logon() {
             type="email"
             placeholder="Seu Email"
             value={email}
+            required={true}
             onChange={e => setEmail(e.target.value)}
           />
           <input
             type="password"
             placeholder="Sua Senha"
             value={password}
+            required={true}
             onChange={e => setPassword(e.target.value)}
           />
           <button disabled={loading} className="button" type="submit">

@@ -67,6 +67,11 @@
   margin-top: 70px;
   margin-bottom: 15px;
   border-radius: 8px;
+  transition: filter 0.2s;
+}
+
+.profile-container div.header button.button-header:hover {
+  filter: brightness(90%);
 }
 
 .profile-container ul li button.delete {

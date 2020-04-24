@@ -12,12 +12,13 @@ export default function DetailEvent() {
   const [event, setEvent] = useState({});
   const [participants, setParticipants] = useState([]);
 
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const { uuid } = useParams();
 
   async function init(uuid) {
     try {
+      setLoading(true);
       let response = await eventModel.datail(uuid);
       let { data } = response.data;
 
@@ -25,6 +26,8 @@ export default function DetailEvent() {
       setParticipants(data.participants);
     } catch (error) {
       alert("Erro ao carregar evento");
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -38,7 +41,7 @@ export default function DetailEvent() {
         <section>
           <img src={logoImg} alt="Be The Hero" />
           <h1>{event.name}</h1>
-          <p>{event.event_date}</p>
+          {loading ? "" : <EventDate event={event} />}
 
           <Link to="/profile" className="back-link">
             <FiArrowLeft size={16} color="#e02041" />
@@ -72,3 +75,32 @@ export default function DetailEvent() {
     </div>
   );
 }
+
+export const EventDate = ({ event }) => {
+  console.log(event);
+  const date = new Date(event.event_date);
+  const dateFormated = new Intl.DateTimeFormat("pt-br", {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit"
+  });
+  const [
+    { value: da },
+    ,
+    { value: mo },
+    ,
+    { value: ye },
+    ,
+    { value: ho },
+    ,
+    { value: mi }
+  ] = dateFormated.formatToParts(date);
+
+  return (
+    <p>
+      {da}/{mo}/{ye} {ho}:{mi}
+    </p>
+  );
+};

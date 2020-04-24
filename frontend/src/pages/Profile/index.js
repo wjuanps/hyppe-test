@@ -6,7 +6,8 @@ import {
   FiTrash2,
   FiEdit2,
   FiRefreshCcw,
-  FiEye
+  FiEye,
+  FiArrowRight
 } from "react-icons/fi";
 
 import userModel from "../../services/user";
@@ -125,87 +126,103 @@ export default function Profile() {
       </div>
 
       <ul>
-        {events.map(event => (
-          <li key={event.uuid}>
-            <strong>NOME:</strong>
-            <p>{event.name}</p>
+        {loading ? (
+          ""
+        ) : events.length <= 0 ? (
+          <div>
+            <h1 style={{ color: "#CA035B" }}>
+              Você ainda não criou nenhum evento!!
+            </h1>
+            <h1>
+              <Link className="back-link" to="/events/new">
+                Crie seu primeiro &nbsp;
+                <FiArrowRight size={16} color="#e02041" />
+              </Link>
+            </h1>
+          </div>
+        ) : (
+          events.map(event => (
+            <li key={event.uuid}>
+              <strong>NOME:</strong>
+              <p>{event.name}</p>
 
-            <strong>ENDEREÇO:</strong>
-            <p>{event.address}</p>
+              <strong>ENDEREÇO:</strong>
+              <p>{event.address}</p>
 
-            <strong>DATA E HORA:</strong>
-            <p>
-              <DateFormat event={event} />
-            </p>
+              <strong>DATA E HORA:</strong>
+              <p>
+                <DateFormat event={event} />
+              </p>
 
-            {eventConfirmed(event.uuid, user) ? (
-              <button
-                onClick={() => handleConfirmEvent(0, event.uuid)}
-                className="presenca-confirmada"
-              >
-                {updating && eventUpdating === event.uuid ? (
-                  <FiRefreshCcw
-                    className="icon-spin"
-                    size={22}
-                    color="#ffffff"
-                  />
-                ) : (
-                  "Desmarcar Presença"
-                )}
-              </button>
-            ) : (
-              <button
-                onClick={() => handleConfirmEvent(1, event.uuid)}
-                className="marcar-presenca"
-              >
-                {updating && eventUpdating === event.uuid ? (
-                  <FiRefreshCcw
-                    className="icon-spin"
-                    size={22}
-                    color="#ffffff"
-                  />
-                ) : (
-                  "Marcar Presença"
-                )}
-              </button>
-            )}
+              {eventConfirmed(event.uuid, user) ? (
+                <button
+                  onClick={() => handleConfirmEvent(0, event.uuid)}
+                  className="presenca-confirmada"
+                >
+                  {updating && eventUpdating === event.uuid ? (
+                    <FiRefreshCcw
+                      className="icon-spin"
+                      size={22}
+                      color="#ffffff"
+                    />
+                  ) : (
+                    "Desmarcar Presença"
+                  )}
+                </button>
+              ) : (
+                <button
+                  onClick={() => handleConfirmEvent(1, event.uuid)}
+                  className="marcar-presenca"
+                >
+                  {updating && eventUpdating === event.uuid ? (
+                    <FiRefreshCcw
+                      className="icon-spin"
+                      size={22}
+                      color="#ffffff"
+                    />
+                  ) : (
+                    "Marcar Presença"
+                  )}
+                </button>
+              )}
 
-            <div>
-              <button
-                className="detail"
-                type="button"
-                onClick={() => history.push(`/events/${event.uuid}/detail`)}
-              >
-                <FiEye size={20} color="#0faab9" />
-              </button>
+              <div>
+                <button
+                  className="detail"
+                  type="button"
+                  onClick={() => history.push(`/events/${event.uuid}/detail`)}
+                >
+                  <FiEye size={20} color="#0faab9" />
+                </button>
 
-              <button
-                className="edit"
-                type="button"
-                onClick={() => history.push(`/events/${event.uuid}`)}
-              >
-                <FiEdit2 size={20} color="#0faab9" />
-              </button>
+                <button
+                  className="edit"
+                  type="button"
+                  onClick={() => history.push(`/events/${event.uuid}`)}
+                >
+                  <FiEdit2 size={20} color="#0faab9" />
+                </button>
 
-              <button
-                className="delete"
-                type="button"
-                disabled={isDeleting}
-                onClick={() => handleDeleteEvent(event.uuid)}
-              >
-                {isDeleting && eventDeleting === event.uuid ? (
-                  <FiRefreshCcw
-                    className="icon-spin"
-                    size={18}
-                    color="#0faab9"
-                  />
-                ) : (
-                  <FiTrash2 size={20} color="#0faab9" />
-                )}
-              </button>
-            </div>
-          </li>
-        ))}
+                <button
+                  className="delete"
+                  type="button"
+                  disabled={isDeleting}
+                  onClick={() => handleDeleteEvent(event.uuid)}
+                >
+                  {isDeleting && eventDeleting === event.uuid ? (
+                    <FiRefreshCcw
+                      className="icon-spin"
+                      size={18}
+                      color="#0faab9"
+                    />
+                  ) : (
+                    <FiTrash2 size={20} color="#0faab9" />
+                  )}
+                </button>
+              </div>
+            </li>
+          ))
+        )}
       </ul>
     </div>
   );
