@@ -6,6 +6,13 @@ Clone the repo in your terminal by clicking the green clone or download button a
 $ git clone https://github.com/wjuanps/hyppe-test.git
 ```
 
+### System requirements
+
+This project was tested in both
+
+* Linux Mint 19.3 Cinnamon
+* Windows 10 Pro
+
 # Hyppe::Rails
 
 Rails specific tasks for Hyppe API v1:
@@ -14,9 +21,14 @@ Rails specific tasks for Hyppe API v1:
 
 This library aims to support and is tested against the following Ruby implementations:
 
-- Ruby 2.6
-- Rails 6.0
-- Check out [the docs](https://guides.rubyonrails.org/getting_started.html).
+* Ruby 2.5.1 and 2.6.6
+* Rails 4.2.10 and 6.0
+* Bundler 2.1.4
+
+To continue make sure you have:
+
+* Ruby installed locally - see the installation guides for Ruby and Rails on [OS X](http://guides.railsgirls.com/install#setup-for-os-x), [Windows](http://guides.railsgirls.com/install#setup-for-windows), and [Linux](http://guides.railsgirls.com/install#setup-for-linux).
+* [Bundler](https://bundler.io/) installed locally - run `gem install bundler`.
 
 ## Installation
 
