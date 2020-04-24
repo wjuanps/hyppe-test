@@ -60,7 +60,11 @@ export default function Logon() {
             onChange={e => setPassword(e.target.value)}
           />
           <button disabled={loading} className="button" type="submit">
-            {loading ? <FiRefreshCcw className="icon-spin" size={22} color="#ffffff" /> : 'Entrar'}
+            {loading ? (
+              <FiRefreshCcw className="icon-spin" size={22} color="#ffffff" />
+            ) : (
+              "Entrar"
+            )}
           </button>
           <Link to="/register" className="back-link">
             <FiLogIn size={16} color="#e02041" />
