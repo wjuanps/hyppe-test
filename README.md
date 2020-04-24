@@ -78,5 +78,13 @@ $ yarn start
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
+# Hyppe::API Docs
+
+The api docs was built using [insomnia-documenter](https://www.npmjs.com/package/insomnia-documenter).
+
+## Usage
+
+In the docs directory, double click in `index.html` to view it in the browser.
+
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
