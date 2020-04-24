@@ -5,6 +5,7 @@ Rails.application.routes.draw do
       post 'users/create', to: 'create_user#create'
 
       get 'user/events', to: 'user_events#index'
+      get 'user/events/:uuid', to: 'user_events#show'
       put 'user/events/:event_id', to: 'user_events#update'
 
       resources :users

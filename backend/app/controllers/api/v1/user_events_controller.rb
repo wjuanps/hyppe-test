@@ -4,11 +4,20 @@ module Api
       def index
         events = Event.includes(:users)
           .where(user_id: current_user.id)
-          .select(:uuid, :name, :event_date, :event_time, :address)
+          .select(:uuid, :name, :event_date, :address)
         render json: {
           code: 200,
           data: events
         }, status: :ok
+      end
+
+      def show
+        event = Event.where(user_id: current_user.id, uuid: params[:uuid])
+          .select(:uuid, :name, :event_date, :address).first
+          render json: {
+            code: 200,
+            data: event
+          }, status: :ok
       end
 
       def update

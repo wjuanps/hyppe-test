@@ -2,14 +2,13 @@ module Api
   module V1
     class EventsController < ApplicationController
       def index
-        events = Event.select(:uuid, :name, :event_date, :event_time, :address)
-          .order("created_at DESC")
+        events = Event.select(:uuid, :name, :event_date, :address)
         render json: { code: 200, data: events }, status: :ok
       end
 
       def show
         event = Event.where(uuid: params[:id])
-          .select(:uuid, :name, :event_date, :event_time, :address).take
+          .select(:uuid, :name, :event_date, :address).take
         render json: { code: 200, data: event }, status: :ok
       end
 
@@ -21,7 +20,6 @@ module Api
             uuid: event.uuid,
             name: event.name,
             date: event.event_date,
-            time: event.event_time,
             address: event.address
           }
         }, status: :created
@@ -45,7 +43,6 @@ module Api
               uuid: event.uuid,
               name: event.name,
               date: event.event_date,
-              time: event.event_time,
               address: event.address
             }
           }, status: :created
@@ -60,7 +57,7 @@ module Api
       private
 
       def event_params
-        params.permit(:name, :event_date, :event_time, :address)
+        params.permit(:name, :event_date, :address)
       end
     end
   end

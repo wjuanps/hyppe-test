@@ -16,8 +16,7 @@ ActiveRecord::Schema.define(version: 2020_04_22_064350) do
     t.bigint "user_id"
     t.string "uuid"
     t.string "name"
-    t.date "event_date"
-    t.time "event_time"
+    t.datetime "event_date"
     t.string "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
