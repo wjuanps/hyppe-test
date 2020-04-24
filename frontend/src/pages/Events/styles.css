@@ -1,0 +1,130 @@
+.profile-container {
+  width: 100%;
+  max-width: 1180px;
+  padding: 0 30px;
+  margin: 32px auto;
+}
+
+.profile-container header {
+  display: flex;
+  align-items: center;
+}
+
+.profile-container header span {
+  font-size: 20px;
+  margin-left: 24px;
+}
+
+.profile-container header a {
+  width: 260px;
+  margin-left: auto;
+  margin-top: 0;
+}
+
+.profile-container header button {
+  width: 60px;
+  height: 60px;
+  border-radius: 4px;
+  border: 1px solid #dcdce6;
+  background: transparent;
+  margin-left: 16px;
+}
+
+.profile-container header button:hover {
+  border-color: #999;
+}
+
+.profile-container div.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.profile-container h1 {
+  margin-top: 80px;
+  margin-bottom: 24px;
+}
+
+.profile-container ul {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 24px;
+  list-style: none;
+}
+
+.profile-container ul li {
+  background: #fff;
+  padding: 24px;
+  border-radius: 8px;
+  position: relative;
+}
+
+.profile-container div.header button.button-header {
+  padding: 16px 24px;
+  background: #e02041;
+  border: 0;
+  color: #fff;
+  font-weight: 700;
+  margin-top: 70px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+}
+
+.profile-container ul li button.delete {
+  position: absolute;
+  right: 24px;
+  top: 24px;
+  border: 0;
+  padding: 5px;
+}
+
+.profile-container ul li button.edit {
+  position: absolute;
+  right: 64px;
+  top: 24px;
+  border: 0;
+  padding: 5px;
+}
+
+.profile-container ul li button.marcar-presenca {
+  margin-top: 15px;
+  width: 100%;
+  padding: 10px;
+  background: #e02041;
+  border: 0;
+  color: #fff;
+  font-weight: 900;
+}
+
+.profile-container ul li button.presenca-confirmada {
+  margin-top: 15px;
+  width: 100%;
+  padding: 10px;
+  background: #1b773a;
+  border: 0;
+  color: #fff;
+  font-weight: 900;
+}
+
+.profile-container ul li button:hover {
+  opacity: 0.8;
+}
+
+.profile-container ul li strong {
+  display: block;
+  margin-bottom: 16px;
+  color: #41414d;
+}
+
+.profile-container ul li p + strong {
+  margin-top: 32px;
+}
+
+.profile-container ul li p {
+  color: #737380;
+  line-height: 21px;
+  font-size: 16px;
+}
+
+.icon-spin {
+  margin-top: 0 !important;
+}

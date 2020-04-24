@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useHistory, useParams } from "react-router-dom";
 import { FiArrowLeft, FiRefreshCcw } from "react-icons/fi";
 import InputMask from "react-input-mask";
 
@@ -9,7 +9,8 @@ import "./styles.css";
 
 import logoImg from "../../assets/logo.png";
 
-export default function NewIncident() {
+export default function EditEvent() {
+  const [eventUuid, setEventUuid] = useState("");
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
   const [eventDate, setEventDate] = useState("");
@@ -19,23 +20,47 @@ export default function NewIncident() {
 
   const history = useHistory();
 
-  async function handleNewIncident(e) {
+  const { uuid } = useParams();
+
+  async function init(uuid) {
+    let response = await eventModel.event(uuid);
+    let { name, address, event_date } = response.data.data;
+
+    let date = new Date(event_date);
+
+    let day = `${date.getDate()}`.padStart(2, "0");
+    let month = `${date.getMonth() + 1}`.padStart(2, "0");
+    let year = `${date.getFullYear()}`;
+    let hour = `${date.getHours()}`.padStart(2, "0");
+    let minute = `${date.getMinutes()}`.padStart(2, "0");
+
+    setEventUuid(response.data.data.uuid);
+    setName(name);
+    setAddress(address);
+    setEventDate(`${day}/${month}/${year}`);
+    setEventTime(`${hour}:${minute}`);
+  }
+
+  useEffect(() => {
+    init(uuid);
+  }, [uuid]);
+
+  async function handleEditIncident(e) {
     e.preventDefault();
     setLoading(true);
 
     try {
-      const params = new URLSearchParams();
-
       const date = eventDate
         .split("/")
         .reverse()
         .join("-");
 
+      const params = new URLSearchParams();
       params.append("name", name);
       params.append("address", address);
       params.append("event_date", `${date} ${eventTime}`);
 
-      await eventModel.create(params);
+      await eventModel.update(eventUuid, params);
 
       setLoading(false);
       history.push("/profile");
@@ -51,8 +76,8 @@ export default function NewIncident() {
       <div className="content">
         <section>
           <img src={logoImg} alt="Be The Hero" />
-          <h1>Cadastrar novo evento</h1>
-          <p>Descreva o evento detalhadamente para encontrar participantes.</p>
+          <h1>Editar evento</h1>
+          <p>Descreva o evento detalhadamente para encontrar participantes</p>
 
           <Link to="/profile" className="back-link">
             <FiArrowLeft size={16} color="#e02041" />
@@ -60,7 +85,7 @@ export default function NewIncident() {
           </Link>
         </section>
 
-        <form onSubmit={handleNewIncident}>
+        <form onSubmit={handleEditIncident}>
           <input
             type="text"
             placeholder="Nome do evento"
@@ -76,8 +101,8 @@ export default function NewIncident() {
             onChange={e => setAddress(e.target.value)}
           />
           <InputMask
-            mask="99/99/9999"
             placeholder="Data"
+            mask="99/99/9999"
             value={eventDate}
             required={true}
             onChange={e => setEventDate(e.target.value)}
@@ -94,7 +119,7 @@ export default function NewIncident() {
             {loading ? (
               <FiRefreshCcw className="icon-spin" size={22} color="#ffffff" />
             ) : (
-              "Cadastrar"
+              "Atualizar"
             )}
           </button>
         </form>

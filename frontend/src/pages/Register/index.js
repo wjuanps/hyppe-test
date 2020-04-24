@@ -51,10 +51,7 @@ export default function Register() {
         <section>
           <img src={logoImg} alt="Be The Hero" />
           <h1>Cadastro</h1>
-          <p>
-            Faça seu cadastro, entre na plataforma e ajude pessoas a encontrar
-            os casos da sua ONG
-          </p>
+          <p>Faça seu cadastro, entre na plataforma e crie seus eventos</p>
 
           <Link to="/" className="back-link">
             <FiArrowLeft size={16} color="#e02041" />
@@ -85,7 +82,11 @@ export default function Register() {
           />
 
           <button disabled={loading} className="button" type="submit">
-            {loading ? <FiRefreshCcw className="icon-spin" size={22} color="#ffffff" /> : 'Cadastrar'}
+            {loading ? (
+              <FiRefreshCcw className="icon-spin" size={22} color="#ffffff" />
+            ) : (
+              "Cadastrar"
+            )}
           </button>
         </form>
       </div>
