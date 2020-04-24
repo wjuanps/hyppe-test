@@ -77,6 +77,22 @@
   padding: 5px;
 }
 
+.profile-container ul li button.edit {
+  position: absolute;
+  right: 64px;
+  top: 24px;
+  border: 0;
+  padding: 5px;
+}
+
+.profile-container ul li button.detail {
+  position: absolute;
+  right: 104px;
+  top: 24px;
+  border: 0;
+  padding: 5px;
+}
+
 .profile-container ul li button.marcar-presenca {
   margin-top: 15px;
   width: 100%;
@@ -105,4 +121,8 @@
   color: #737380;
   line-height: 21px;
   font-size: 16px;
+}
+
+.icon-spin {
+  margin-top: 0 !important;
 }
