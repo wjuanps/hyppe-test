@@ -4,7 +4,7 @@ Rails specific tasks for Hyppe API v1:
 
 ## Getting started
 
-- Check out [the docs][https://guides.rubyonrails.org/getting_started.html].
+- Check out [the docs](https://guides.rubyonrails.org/getting_started.html).
 
 ## Installation
 
@@ -34,3 +34,11 @@ This library aims to support and is tested against the following Ruby implementa
 
 - Ruby 2.6
 - Rails 6.0
+
+## Hyppe::ReactJS
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+In the frontend directory, you can run:
+
+### `yarn start` or `npm run start`
