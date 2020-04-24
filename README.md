@@ -1,52 +1,82 @@
+# Teste Hyppe
+
+Clone the repo in your terminal by clicking the green clone or download button at the top right and copyin the url
+
+```sh
+$ git clone https://github.com/wjuanps/hyppe-test.git
+```
+
 # Hyppe::Rails
 
 Rails specific tasks for Hyppe API v1:
 
 ## Getting started
 
+This library aims to support and is tested against the following Ruby implementations:
+
+- Ruby 2.6
+- Rails 6.0
 - Check out [the docs](https://guides.rubyonrails.org/getting_started.html).
 
 ## Installation
 
-Run the following command to install the gems:
+In the backend directory, run the following command to install the gems:
 
-```
-bundle install
+```sh
+$ bundle install
 ```
 
 ## Database
 
 The database is running remotely, so it's not necessary any configuration
 
+* adapter: `mysql2`
+* host: `sql10.freemysqlhosting.net`
+* username: `sql10334989`
+* password: `TPN9eEAZzM`
+* port: `3306`
+
 ## Usage
 
-Run the following command to start the application
+In the backend directory, run the following command to start the application
 
-```
-rails server -p 3333
+```sh
+$ rails server -p 3333
 ```
 
 If you want, you can change the port, but make sure to set the new port in `/frontend/src/services/api.js`
 
-## Supported Ruby Versions
 
-This library aims to support and is tested against the following Ruby implementations:
-
-- Ruby 2.6
-- Rails 6.0
-
-## Hyppe::ReactJS
+# Hyppe::ReactJS
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-In the frontend directory, you can run:
+## Getting started
 
-```
-yarn start
+##### System dependencies
+
+* Node.js 11.x or higher
+* npm 6.x or higher
+* yarn 1.x or higher (optional)
+
+## Installation
+
+To install all dependencies, in the frontend directory, you can run:
+
+```sh
+$ yarn install
 ```
 
-or
+## Usage
 
+In the frontend directory, run the following command to start the application
+
+```sh
+$ yarn start
 ```
-npm run start
-```
+
+Runs the app in the development mode.
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
