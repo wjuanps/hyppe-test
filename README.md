@@ -2,6 +2,10 @@
 
 Rails specific tasks for Hyppe API v1:
 
+## Getting started
+
+- Check out [the docs](https://guides.rubyonrails.org/getting_started.html).
+
 ## Installation
 
 Run the following command to install the gems:
@@ -21,6 +25,8 @@ Run the following command to start the application
 ```
 rails server -p 3333
 ```
+
+If you want, you can change the port, but make sure to set the new port in `/frontend/src/services/api.js`
 
 ## Supported Ruby Versions
 
