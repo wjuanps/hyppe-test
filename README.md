@@ -75,7 +75,7 @@ In the frontend directory, run the following command to start the application
 $ yarn start
 ```
 
-Runs the app in the development mode.
+Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ## License
