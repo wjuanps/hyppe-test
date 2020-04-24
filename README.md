@@ -41,4 +41,12 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the frontend directory, you can run:
 
-### `yarn start` or `npm run start`
+```
+yarn start
+```
+
+or
+
+```
+npm run start
+```
