@@ -84,7 +84,7 @@ The api docs was built using [insomnia-documenter](https://www.npmjs.com/package
 
 ## Usage
 
-In the docs directory, double click in `index.html` to view it in the browser.
+In the docs directory, double click `index.html` to view it in the browser.
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
