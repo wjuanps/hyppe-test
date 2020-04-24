@@ -4,7 +4,7 @@ Rails specific tasks for Hyppe API v1:
 
 ## Getting started
 
-- Check out [the docs](https://guides.rubyonrails.org/getting_started.html).
+- Check out [the docs][https://guides.rubyonrails.org/getting_started.html].
 
 ## Installation
 
