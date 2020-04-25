@@ -27,6 +27,8 @@ The database is running remotely, so it's not necessary any configuration
 
 Rails specific tasks for Hyppe API v1:
 
+### You can choose which version of the api to use:<br /> Docker or Rails locally
+
 # Hyppe::Docker
 
 Make sure you have:
