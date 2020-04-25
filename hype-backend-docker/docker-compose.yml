@@ -1,0 +1,9 @@
+version: "3"
+services:
+  web:
+    build: .
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3333 -b '0.0.0.0'"
+    volumes:
+      - .:/hype-backend-docker
+    ports:
+      - "3333:3333"
