@@ -13,9 +13,43 @@ This project was tested in both
 * Linux Mint 19.3 Cinnamon
 * Windows 10 Pro
 
-# Hyppe::Rails
+# Database
+
+The database is running remotely, so it's not necessary any configuration
+
+* adapter: `mysql2`
+* host: `sql10.freemysqlhosting.net`
+* username: `sql10334989`
+* password: `TPN9eEAZzM`
+* port: `3306`
+
+# Hyppe::API
 
 Rails specific tasks for Hyppe API v1:
+
+# Hyppe::Docker
+
+Make sure you have:
+
+* Docker installed locally
+
+## Installation
+
+In the hyppe-backend-docker directory, run the following command:
+
+```sh
+$ docker-compose build
+```
+
+## Usage
+
+In the hyppe-backend-docker directory, run the following command to start the application
+
+```sh
+$ docker-compose up
+```
+
+# Hyppe::Rails
 
 ## Getting started
 
@@ -38,16 +72,6 @@ In the backend directory, run the following command to install the gems:
 $ bundle install
 ```
 
-## Database
-
-The database is running remotely, so it's not necessary any configuration
-
-* adapter: `mysql2`
-* host: `sql10.freemysqlhosting.net`
-* username: `sql10334989`
-* password: `TPN9eEAZzM`
-* port: `3306`
-
 ## Usage
 
 In the backend directory, run the following command to start the application
@@ -57,7 +81,6 @@ $ rails server -p 3333
 ```
 
 If you want, you can change the port, but make sure to set the new port in `/frontend/src/services/api.js`
-
 
 # Hyppe::ReactJS
 
